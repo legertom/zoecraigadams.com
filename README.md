@@ -1,5 +1,7 @@
 # zoecraigadams.com
 
+**Live: https://legertom.github.io/zoecraigadams.com/**
+
 Static site for **Zoë Adams**, theatre director. Plain HTML + CSS, no build step
 required to deploy — GitHub Pages serves the committed files as-is.
 
@@ -58,7 +60,9 @@ redirect stubs so existing links and search results still land correctly.
 
 ## Deploying
 
-Push to `main`; GitHub Pages serves from the repo root. All asset paths are
+Push to `main`; GitHub Pages builds automatically and serves from the repo root
+(usually live within a minute). CSS and JS are CDN-cached for about 10 minutes,
+so a hard refresh may be needed to see a style change immediately. All asset paths are
 relative, so the site works from a project subpath or a custom domain without
 changes. To use the custom domain, add a `CNAME` file containing
 `zoecraigadams.com` and point DNS at GitHub Pages.
