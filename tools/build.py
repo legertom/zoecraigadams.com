@@ -253,17 +253,27 @@ def build_home():
         cards += ('<a class="card reveal' + tcls + '" style="--show:' + pr['accent'] + '" '
                   'href="work/' + pr['slug'] + '/">' + art + '</a>')
 
-    hero_bg = ''
+    hero_bg = hero_css = ''
     if slides:
-        cls = 'hero__bg' + (' hero__bg--single' if len(slides) == 1 else '')
-        cycle = ' style="--hero-cycle:' + str(len(slides) * 7) + 's"'
+        n_sl = len(slides)
+        secs = 7                      # seconds each still holds
+        cycle = n_sl * secs
         imgs = ''
         for n, (slug, ent) in enumerate(slides):
             tag = pic(ent, '100vw', alt='', eager=(n == 0), lowpri=(n > 0))
-            delay = ' style="animation-delay:' + str(n * 7) + 's"'
+            delay = ' style="animation-delay:' + str(n * secs) + 's"'
             imgs += tag[:-1] + delay + '>'
-        # each slide waits its turn; the first carries the load priority
-        hero_bg = '<div class="' + cls + '"' + cycle + '>' + imgs + '</div>'
+        hero_bg = ('<div class="hero__bg" style="--hero-cycle:' + str(cycle) + 's">'
+                   + imgs + '</div>')
+        # Keyframes have to match the slide count: each still owns 100/N of the
+        # cycle, so a hardcoded quarter only ever worked for four.
+        if n_sl > 1:
+            slot = 100.0 / n_sl
+            fade = min(4.0, 1.2 / cycle * 100)
+            hero_css = ('<style>@keyframes heroCycle{0%{opacity:0}'
+                + ('%.2f' % fade) + '%{opacity:1}'
+                + ('%.2f' % slot) + '%{opacity:1}'
+                + ('%.2f' % (slot + fade)) + '%{opacity:0}100%{opacity:0}}</style>')
 
     tag = ('Zo&euml; creates theatre to spark <b>imagination</b> and open hearts '
            'to the magic of <b>transformation</b>.')
@@ -297,7 +307,8 @@ def build_home():
         '<div class="rack">' + cards + '</div></div></section>\n</main>\n' + foot(0))
 
     write('index.html', head('Zoë Adams — Theatre Director', SITE['tagline'], 0,
-          '<script type="application/ld+json">' + ld + '</script>\n') + body)
+          '<script type="application/ld+json">' + ld + '</script>\n'
+          + hero_css + '\n') + body)
 
 # -------------------------------------------------------------- projects --
 def build_projects():

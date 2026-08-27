@@ -863,7 +863,7 @@
     },
     {
       "slug": "the-wizard-of-oz",
-      "index": 2
+      "index": 11
     },
     {
       "slug": "cinderella",
@@ -872,6 +872,10 @@
     {
       "slug": "ursus-americanus",
       "index": 0
+    },
+    {
+      "slug": "the-wizard-of-oz",
+      "index": 2
     }
   ]
 }
