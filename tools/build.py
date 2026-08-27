@@ -491,6 +491,9 @@ def build_extras():
     write('robots.txt', 'User-agent: *\nAllow: /\n\nSitemap: https://'
           + SITE['domain'] + '/sitemap.xml\n')
     write('.nojekyll', '')
+    # GitHub Pages reads the custom domain from this file; regenerating it every
+    # build means a deploy can never quietly drop the domain.
+    write('CNAME', SITE['domain'] + '\n')
     write('assets/favicon.svg',
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
         '<rect width="64" height="64" fill="#08070A"/>'
