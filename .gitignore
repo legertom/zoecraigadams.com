@@ -1,3 +1,6 @@
 # Working data from the Squarespace scrape — masters live locally, not on Pages.
 scrape/
 .DS_Store
+
+# Source photography from Zoë's Squarespace export — masters, not deployed.
+Zoë Website Photos/

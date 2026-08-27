@@ -9,25 +9,23 @@ Design direction: contemporary commercial Broadway marketing — marquee bulbs,
 a poster-rack of key art with a brand colour per production, heavy condensed
 caps, and a real billing block for credits.
 
-## Adding photography for an incoming production
+## Where the photography comes from
 
-Both **To Have and to Hold** and **Cinderella** are already in the site as
-"Coming Soon" teaser posters. When the images arrive:
+Masters live in `Zoë Website Photos/` (gitignored — Zoë's Squarespace export
+plus the full-resolution originals for the 2026 shows). Each production's
+`images` array in `content/site.json` holds paths to its source files, so
+masters can sit anywhere without the templates caring.
 
-1. Drop the photos into `scrape/images/` named with the show's prefix, then list
-   the filenames under that project's `images` array in `content/site.json`.
-   (Or copy them anywhere and point `images` at the paths.)
-2. Fill in the `TODO` fields in `content/site.json` for that project — `venue`,
-   `location`, `year`, `byline`, `credits`, `photography`.
-3. Rebuild:
+To add or change photos for a show: put the files somewhere, list their paths
+in that project's `images` array (first one becomes the hero), then rebuild:
 
 ```bash
 python3 tools/prepare_images.py && python3 tools/build.py
 ```
 
-The teaser poster is replaced by real key art automatically — no template edits.
-A production with an empty `images` array always renders the teaser treatment,
-so shows can be announced before they are shot.
+A production with an empty `images` array renders a marquee "Coming Soon"
+teaser poster instead, so a show can be announced before it is shot; adding
+photos swaps in real key art with no template edits.
 
 ## Editing content
 
