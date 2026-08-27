@@ -163,8 +163,9 @@ def award_list(pr):
         if a.get('note'):
             bits_.append(e(a['note']))
         if a.get('url'):
+            label = a.get('link_text') or ('Read more' if win else 'See the nominees')
             bits_.append('<a href="' + e(a['url']) + '" target="_blank" rel="noopener">'
-                         'See the nominees ' + ARROW + '</a>')
+                         + e(label) + ' ' + ARROW + '</a>')
         if bits_:
             notes += '<p class="pawards__note">' + ' '.join(bits_) + '</p>'
     return '<ul class="pawards">' + lis + '</ul>' + notes
