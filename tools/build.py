@@ -151,7 +151,7 @@ def award_list(pr):
     aw = pr.get('awards') or []
     if not aw:
         return ''
-    lis = ''
+    lis, notes = '', ''
     for a in aw:
         win = a.get('type') == 'winner'
         cats = ', '.join(e(c) for c in a.get('categories') or [])
@@ -159,7 +159,15 @@ def award_list(pr):
                 + STAR + ' ' + ('Winner' if win else 'Nominee') + ' &mdash; '
                 + e(a.get('org', '')) + ('<span class="cat">' + cats + '</span>' if cats else '')
                 + '</li>')
-    return '<ul class="pawards">' + lis + '</ul>'
+        bits_ = []
+        if a.get('note'):
+            bits_.append(e(a['note']))
+        if a.get('url'):
+            bits_.append('<a href="' + e(a['url']) + '" target="_blank" rel="noopener">'
+                         'See the nominees ' + ARROW + '</a>')
+        if bits_:
+            notes += '<p class="pawards__note">' + ' '.join(bits_) + '</p>'
+    return '<ul class="pawards">' + lis + '</ul>' + notes
 
 def bits(pr, tag='span'):
     out = ''
