@@ -121,7 +121,8 @@
         }
       ],
       "role": "Directed by",
-      "focal": "50% 26%"
+      "focal": "50% 26%",
+      "hero_index": 0
     },
     {
       "slug": "cinderella",
@@ -511,7 +512,7 @@
       "tickets": "",
       "press": [],
       "role": "Directed by",
-      "card_index": 10
+      "card_index": 5
     },
     {
       "slug": "in-the-name-of-us",
@@ -762,7 +763,8 @@
       "tickets": "",
       "press": [],
       "role": "Directed by",
-      "card_index": 2
+      "card_index": 2,
+      "hero_index": 2
     },
     {
       "slug": "meltdown",
@@ -850,13 +852,14 @@
       "tickets": "",
       "press": [],
       "role": "Directed by",
-      "card_index": 1
+      "card_index": 1,
+      "hero_index": 5
     }
   ],
   "hero_slides": [
     {
       "slug": "to-have-and-to-hold",
-      "index": 0
+      "index": 9
     },
     {
       "slug": "the-wizard-of-oz",
