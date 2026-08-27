@@ -113,7 +113,8 @@
           "quote": "Lapidus and Sardarov make these lines crackle with flirtatious electricity."
         }
       ],
-      "role": "Directed by"
+      "role": "Directed by",
+      "focal": "50% 26%"
     },
     {
       "slug": "cinderella",
@@ -502,7 +503,8 @@
       "run": null,
       "tickets": "",
       "press": [],
-      "role": "Directed by"
+      "role": "Directed by",
+      "card_index": 10
     },
     {
       "slug": "in-the-name-of-us",
@@ -551,7 +553,8 @@
       "run": null,
       "tickets": "",
       "press": [],
-      "role": "Directed by"
+      "role": "Directed by",
+      "focal": "50% 30%"
     },
     {
       "slug": "skin-flick-city",
@@ -707,7 +710,8 @@
       "run": null,
       "tickets": "",
       "press": [],
-      "role": "Directed by"
+      "role": "Directed by",
+      "card_index": 5
     },
     {
       "slug": "the-cherry-orchard",

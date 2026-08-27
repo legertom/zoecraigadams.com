@@ -20,7 +20,7 @@ def e(s):
 def rel(depth):
     return '../' * depth
 
-def pic(entry, sizes, alt='', eager=False, depth=0, cls='', lowpri=False):
+def pic(entry, sizes, alt='', eager=False, depth=0, cls='', lowpri=False, pos=''):
     if not entry:
         return ''
     p = rel(depth)
@@ -29,10 +29,11 @@ def pic(entry, sizes, alt='', eager=False, depth=0, cls='', lowpri=False):
     load = 'eager' if eager else 'lazy'
     prio = ' fetchpriority="high"' if eager else (' fetchpriority="low"' if lowpri else '')
     klass = ' class="' + cls + '"' if cls else ''
+    style = ' style="object-position:' + pos + '"' if pos else ''
     return ('<img src="' + big + '" srcset="' + srcset + '" sizes="' + sizes + '"'
             ' width="' + str(entry['w']) + '" height="' + str(entry['h']) + '"'
             ' loading="' + load + '"' + prio + ' decoding="async" alt="' + e(alt) + '"'
-            + klass + '>')
+            + klass + style + '>')
 
 FONTS = ('https://fonts.googleapis.com/css2?'
          'family=Archivo:ital,wdth,wght@0,62..125,400..800;1,62..125,400..700'
@@ -170,6 +171,29 @@ def award_list(pr):
             notes += '<p class="pawards__note">' + ' '.join(bits_) + '</p>'
     return '<ul class="pawards">' + lis + '</ul>' + notes
 
+
+def card_of(pr, ents):
+    i = pr.get('card_index')
+    if isinstance(i, int) and 0 <= i < len(ents):
+        return ents[i]
+    return ents[0] if ents else None
+
+def hero_of(pr, ents):
+    """The hero is force-cropped very wide, so it must be a landscape frame.
+    An explicit hero_index wins; otherwise take the first landscape image."""
+    if not ents:
+        return None, 0
+    i = pr.get('hero_index')
+    if isinstance(i, int) and 0 <= i < len(ents):
+        return ents[i], i
+    for n, e in enumerate(ents):
+        if e['ratio'] >= 1.4:
+            return e, n
+    return ents[0], 0
+
+def focal(pr):
+    return pr.get('focal') or '50% 35%'
+
 def bits(pr, tag='span'):
     out = ''
     for b in (pr['venue'], pr['location']):
@@ -209,7 +233,7 @@ def build_home():
         venue = ' &middot; '.join(e(x) for x in (pr['venue'], pr['location']) if x)
         if gal:
             art = ('<div class="card__art">'
-                   + pic(gal[0], '(min-width:70rem) 22vw, (min-width:44rem) 33vw, 50vw',
+                   + pic(card_of(pr, gal), '(min-width:70rem) 22vw, (min-width:44rem) 33vw, 50vw',
                          alt=pr['title'] + ' - production photograph', eager=(i <= 4))
                    + '<span class="card__wash"></span><span class="card__shade"></span>' + badge
                    + '<div class="card__plate">'
@@ -286,9 +310,10 @@ def build_projects():
         meta = ('<p class="pbar">' + bits(pr) + '</p>'
                 + ('<p class="pbyline">' + byline + '</p>' if byline else '') + awards)
 
+        hero_img, hero_i = hero_of(pr, gal)
         if gal:
             hero = ('<section class="phero"><div class="phero__bg">'
-                + pic(gal[0], '100vw', alt='', eager=True, depth=2)
+                + pic(hero_img, '100vw', alt='', eager=True, depth=2, pos=focal(pr))
                 + '</div><span class="phero__wash"></span><span class="phero__veil"></span>'
                 '<div class="phero__inner">'
                 '<p class="kicker">' + STAR + ' Production ' + ('%02d' % (i + 1)) + '</p>'
@@ -307,7 +332,8 @@ def build_projects():
                 '<p class="teaser__note">Check back shortly</p></div></div></div>')
 
         figs = ''
-        for n, g in enumerate(gal[1:], 1):
+        rest = [g for n, g in enumerate(gal) if n != hero_i]
+        for n, g in enumerate(rest, 1):
             wide = ' wide' if (n % 5 == 0 or g['ratio'] > 2.1) else ''
             figs += ('<figure class="reveal' + wide + '">'
                      + pic(g, '(min-width:44rem) 50vw, 100vw',
