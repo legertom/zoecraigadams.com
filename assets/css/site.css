@@ -482,8 +482,8 @@ a{color:inherit;text-decoration:none}
 @media (max-width:34rem){
   /* nav links need a real tap target, not a 15px sliver */
   .nav__links{gap:1rem}
-  .nav__links a{padding:.7rem 0 .55rem;font-size:.66rem;letter-spacing:.16em}
-  .nav__links a::after{bottom:.35rem}
+  .nav__links a{padding:.95rem 0 .8rem;font-size:.66rem;letter-spacing:.16em}
+  .nav__links a::after{bottom:.55rem}
   .nav{padding-block:.5rem}
 
   /* the star separators dangle at the end of wrapped lines */
