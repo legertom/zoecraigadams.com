@@ -452,6 +452,10 @@ a{color:inherit;text-decoration:none}
    ========================================================================= */
 .press{padding:clamp(2.5rem,7vh,5rem) 0;border-top:1px solid var(--rule)}
 .press__item{max-width:52rem;margin-inline:auto;text-align:center}
+.press__item + .press__item{
+  margin-top:clamp(2rem,5vh,3.2rem);padding-top:clamp(2rem,5vh,3.2rem);
+  border-top:1px solid var(--rule);
+}
 .press__stars{color:var(--gold);font-size:.9rem;letter-spacing:.35em;margin:0 0 1.2rem}
 .press__quote{
   font-family:var(--marquee);font-weight:800;text-transform:uppercase;

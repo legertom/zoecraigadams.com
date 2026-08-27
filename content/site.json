@@ -65,7 +65,7 @@
           "name": "Riley Cerabona"
         }
       ],
-      "photography": "",
+      "photography": "Marcus Middleton",
       "sort": 1,
       "status": "live",
       "note": "Off-Broadway world premiere. Production photography from the run.",
@@ -105,6 +105,13 @@
       },
       "tickets": "https://www.eventbrite.com/e/to-have-and-to-hold-tickets-1993684820968",
       "press": [
+        {
+          "outlet": "The New York Sun",
+          "critic": "Elysa Gardner",
+          "date": "2026-08-26",
+          "url": "https://www.nysun.com/article/a-modern-shakespearean-spin-on-sisterhood",
+          "quote": "A concise and thoughtful comedy … under Zoë Adams’s brisk direction."
+        },
         {
           "outlet": "TheaterMania",
           "critic": "Zachary Stewart",
@@ -754,7 +761,8 @@
       "run": null,
       "tickets": "",
       "press": [],
-      "role": "Directed by"
+      "role": "Directed by",
+      "card_index": 2
     },
     {
       "slug": "meltdown",
@@ -841,7 +849,8 @@
       "run": null,
       "tickets": "",
       "press": [],
-      "role": "Directed by"
+      "role": "Directed by",
+      "card_index": 1
     }
   ],
   "hero_slides": [
