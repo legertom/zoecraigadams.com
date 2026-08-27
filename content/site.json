@@ -822,7 +822,9 @@
       "run": null,
       "tickets": "",
       "press": [],
-      "role": "Directed by"
+      "role": "Directed by",
+      "hero_index": 3,
+      "card_index": 3
     },
     {
       "slug": "krav",

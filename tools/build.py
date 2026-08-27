@@ -342,14 +342,19 @@ def build_projects():
                 '<div class="teaser__rule"></div>'
                 '<p class="teaser__note">Check back shortly</p></div></div></div>')
 
+        # every still appears here, the hero included - it is cropped wide up top,
+        # so this is the only place the full frame can be seen
         figs = ''
-        rest = [g for n, g in enumerate(gal) if n != hero_i]
-        for n, g in enumerate(rest, 1):
-            wide = ' wide' if (n % 5 == 0 or g['ratio'] > 2.1) else ''
-            figs += ('<figure class="reveal' + wide + '">'
-                     + pic(g, '(min-width:44rem) 50vw, 100vw',
-                           alt=pr['title'] + ' - production photograph ' + str(n + 1), depth=2)
-                     + '</figure>')
+        total = len(gal)
+        for n, g in enumerate(gal, 1):
+            full = rel(2) + g['sizes'][-1][1]
+            cap = pr['title'] + ' - production photograph ' + str(n)
+            figs += ('<figure class="reveal">'
+                     '<a class="shot" href="' + full + '"'
+                     ' data-w="' + str(g['w']) + '" data-h="' + str(g['h']) + '"'
+                     ' aria-label="Open photograph ' + str(n) + ' of ' + str(total) + ' full size">'
+                     + pic(g, '(min-width:44rem) 50vw, 100vw', alt=cap, depth=2)
+                     + '</a></figure>')
         gallery = '<div class="wrap"><div class="gallery">' + figs + '</div></div>' if figs else ''
 
         band = now_band(pr, 2, show_title=False) if running(pr) else ''
