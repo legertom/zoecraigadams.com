@@ -170,11 +170,14 @@ def bits(pr, tag='span'):
         out += '<i>' + e(pr['year']) + '</i>'
     return out
 
+WRITTEN = set()
+
 def write(path, content):
     d = os.path.dirname(path)
     if d:
         os.makedirs(d, exist_ok=True)
     open(path, 'w', encoding='utf-8').write(content)
+    WRITTEN.add(os.path.normpath(path))
 
 # ------------------------------------------------------------------ home --
 def build_home():
@@ -405,6 +408,9 @@ LEGACY = {
 
 def build_extras():
     for old, new in LEGACY.items():
+        if os.path.normpath(old + '/index.html') in WRITTEN:
+            print('  legacy stub skipped (real page wins): /' + old + '/')
+            continue
         depth = old.count('/') + 1
         tgt = rel(depth) + new
         if not tgt:
