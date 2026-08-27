@@ -4,7 +4,9 @@
 Every asset path is relative, so the output works unchanged from a repo
 root, a project subpath (user.github.io/repo/), or a custom domain.
 """
-import json, os, shutil, html
+import json, os, shutil, html, datetime
+
+TODAY = datetime.date.today().isoformat()
 
 SITE = json.load(open('content/site.json'))
 IMGS = json.load(open('content/images.json'))
@@ -84,6 +86,48 @@ def foot(depth):
         '</div></footer>\n'
         '<script src="' + p + 'assets/js/site.js" defer></script>\n</body>\n</html>')
 
+
+def running(pr):
+    r = pr.get('run')
+    return bool(r and r['start'] <= TODAY <= r['end'])
+
+def now_band(pr, depth, show_title=True):
+    """Marquee band for a production currently on stage."""
+    r = pr.get('run')
+    if not r:
+        return ''
+    venue = ' &middot; '.join(e(x) for x in (pr['venue'], pr['location']) if x)
+    cta = ''
+    if pr.get('tickets'):
+        cta = ('<div class="now__cta"><a class="btn btn--ticket" href="' + e(pr['tickets'])
+               + '" target="_blank" rel="noopener">Tickets</a></div>')
+    href = rel(depth) + 'work/' + pr['slug'] + '/'
+    return ('<section class="now" data-until="' + r['end'] + '" style="--show:'
+        + pr['accent'] + '"><div class="wrap"><div class="now__inner"><div class="now__text">'
+        '<p class="now__tag"><span class="now__pulse"></span>Now Playing Off-Broadway</p>'
+        + ('<h2 class="now__title"><a href="' + href + '">' + e(pr['title']) + '</a></h2>'
+           if show_title else '<h2 class="now__title">' + r['label'] + '</h2>')
+        + ('<p class="now__meta"><b>' + r['label'] + '</b><br>' + venue if show_title
+           else '<p class="now__meta">' + venue)
+        + ('<br>' + e(r['note']) if r.get('note') else '') + '</p>'
+        '</div>' + cta + '</div></div></section>')
+
+def press_block(pr):
+    items = pr.get('press') or []
+    if not items:
+        return ''
+    out = ''
+    for q in items:
+        attr = '<b>' + e(q['outlet']) + '</b>'
+        if q.get('critic'):
+            attr += '<span>' + e(q['critic']) + '</span>'
+        if q.get('url'):
+            attr += ('<a href="' + e(q['url']) + '" target="_blank" rel="noopener">'
+                     'Read the review</a>')
+        out += ('<div class="press__item"><p class="press__quote">&ldquo;'
+                + e(q['quote']) + '&rdquo;</p><p class="press__attr">' + attr + '</p></div>')
+    return '<section class="press"><div class="wrap">' + out + '</div></section>'
+
 def bits(pr, tag='span'):
     out = ''
     for b in (pr['venue'], pr['location']):
@@ -125,8 +169,9 @@ def build_home():
                    + ('<p class="card__venue">' + venue + '</p>' if venue else '')
                    + '</div></div>')
         else:
+            tag = 'Now Playing' if running(pr) else 'Coming Soon'
             art = ('<div class="card__art bulbs"><div class="teaser">'
-                   '<p class="teaser__tag">' + STAR + ' Coming Soon</p>'
+                   '<p class="teaser__tag">' + STAR + ' ' + tag + '</p>'
                    '<h3 class="teaser__title">' + e(pr['title']) + '</h3>'
                    '<div class="teaser__rule"></div>'
                    '<p class="teaser__note">' + (venue + '<br>' if venue else '')
@@ -163,6 +208,7 @@ def build_home():
         '<span>Drama League Directing Fellow 2024&ndash;26</span><i>' + STAR + '</i>'
         '<span>Member SDC</span></p>'
         '</div></section>\n'
+        + ''.join(now_band(p, 0) for p in SITE['projects'] if running(p)) +
         '<section class="section" id="work"><div class="wrap">'
         '<div class="section__head">'
         '<h2 class="slab section__title">Selected Work</h2>'
@@ -196,14 +242,11 @@ def build_projects():
                 + '</div></section>')
         else:
             hero = ('<section class="phero phero--teaser"><div class="phero__inner">'
-                '<p class="kicker">' + STAR + ' Coming Soon</p>'
+                '<p class="kicker">' + STAR + ' '
+                + ('Now Playing Off-Broadway' if running(pr) else 'Coming Soon') + '</p>'
                 '<h1 class="slab ptitle">' + e(pr['title']) + '</h1>' + meta
                 + '</div></section>'
-                '<div class="wrap"><div class="card__art bulbs" '
-                'style="aspect-ratio:16/6;display:grid;place-items:center;text-align:center;'
-                'border:1px solid var(--show);background:radial-gradient(70% 120% at 50% 0%,'
-                'color-mix(in srgb,var(--show) 30%,transparent),transparent 70%),'
-                'linear-gradient(170deg,var(--ink-3),var(--ink) 70%)">'
+                '<div class="wrap"><div class="teaser-band bulbs">'
                 '<div class="teaser"><p class="teaser__tag">' + STAR + ' Key art in production</p>'
                 '<h2 class="teaser__title">Production stills are on their way.</h2>'
                 '<div class="teaser__rule"></div>'
@@ -218,12 +261,22 @@ def build_projects():
                      + '</figure>')
         gallery = '<div class="wrap"><div class="gallery">' + figs + '</div></div>' if figs else ''
 
+        band = now_band(pr, 2, show_title=False) if running(pr) else ''
+        press = press_block(pr)
+
         billing = ''
-        if pr['credits'] or pr['byline']:
+        if pr['credits'] or pr['byline'] or pr.get('cast'):
             pairs = ''
             for c in pr['credits']:
                 pairs += ('<div class="pair"><dt class="role">' + e(c['role']) + '</dt> '
                           '<dd>' + e(c['name']) + '</dd></div>')
+            cast = ''
+            if pr.get('cast'):
+                cp = ''
+                for c in pr['cast']:
+                    cp += ('<div class="pair"><dt class="role">' + e(c['role']) + '</dt> '
+                           '<dd class="name">' + e(c['name']) + '</dd></div>')
+                cast = '<span class="block__cast"><dl>' + cp + '</dl></span>'
             lead = ('<span class="block__lead">' + byline + '</span>') if byline else ''
             photo = ''
             if pr.get('photography'):
@@ -233,7 +286,7 @@ def build_projects():
                 '<div class="billing__head">'
                 '<p class="kicker">' + STAR + ' The Company ' + STAR + '</p>'
                 '<p class="billing__presents">' + e(pr['title']) + '</p></div>'
-                '<div class="block">' + lead
+                '<div class="block">' + lead + cast
                 + ('<dl>' + pairs + '</dl>' if pairs else '')
                 + '<span class="block__dir">Directed by <b>Zo&euml; Adams</b></span>'
                 + photo + '</div></div></section>')
@@ -256,8 +309,8 @@ def build_projects():
             desc += ', ' + pr['year']
         desc += '. Directed by Zoë Adams.'
 
-        body = (nav(2, '') + '<main id="main">' + hero + gallery + billing + '</main>'
-                + pager + foot(2))
+        body = (nav(2, '') + '<main id="main">' + hero + band + press + gallery
+                + billing + '</main>' + pager + foot(2))
         write('work/' + pr['slug'] + '/index.html',
               head(pr['title'] + ' — Zoë Adams', desc, 2,
                    body_style='--show:' + pr['accent']) + body)
