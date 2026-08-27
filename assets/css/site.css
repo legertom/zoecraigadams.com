@@ -121,7 +121,19 @@ a{color:inherit;text-decoration:none}
   padding:9rem var(--gutter) clamp(2.2rem,6vh,4rem);overflow:hidden;isolation:isolate;
 }
 .hero__bg{position:absolute;inset:0;z-index:-3;background:var(--ink)}
-.hero__bg img{width:100%;height:100%;object-fit:cover}
+/* The lockup never moves; only the photography behind it changes.
+   The first still is a permanent base layer - it paints immediately (no
+   fade-up delaying LCP) and the others cross-fade over it in turn, so there
+   is never a frame with nothing on screen. */
+.hero__bg img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;
+}
+.hero__bg img + img{
+  opacity:0;animation:heroCycle var(--hero-cycle,28s) linear infinite;
+}
+@keyframes heroCycle{
+  0%{opacity:0} 4%{opacity:1} 25%{opacity:1} 29%{opacity:0} 100%{opacity:0}
+}
 .hero__wash{display:none}
 .hero__veil{position:absolute;inset:0;z-index:-1;background:
   radial-gradient(88% 60% at 50% 0%,rgba(255,194,74,.14),transparent 62%),
@@ -381,6 +393,8 @@ a{color:inherit;text-decoration:none}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
     transition-duration:.001ms!important}
   .rise,.js .reveal{opacity:1;transform:none}
+  /* hold the first still rather than cycling */
+  .hero__bg img + img{opacity:0!important;animation:none!important}
 }
 
 /* billing block internals — dt/dd flow inline like real poster billing */

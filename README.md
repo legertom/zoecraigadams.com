@@ -27,6 +27,15 @@ A production with an empty `images` array renders a marquee "Coming Soon"
 teaser poster instead, so a show can be announced before it is shot; adding
 photos swaps in real key art with no template edits.
 
+## Hero slideshow
+
+`hero_slides` in `content/site.json` lists which stills cross-fade behind the
+name lockup on the home page (`{slug, index}`, index into that show's
+`images`). The first one is a permanent base layer: it paints immediately and
+the rest fade over it in turn, so no frame is ever blank and the leading image
+still carries load priority. Seven seconds per slide. Under
+`prefers-reduced-motion` only the first still is shown.
+
 ## Editing content
 
 Everything lives in [`content/site.json`](content/site.json): bio, statement,

@@ -20,14 +20,14 @@ def e(s):
 def rel(depth):
     return '../' * depth
 
-def pic(entry, sizes, alt='', eager=False, depth=0, cls=''):
+def pic(entry, sizes, alt='', eager=False, depth=0, cls='', lowpri=False):
     if not entry:
         return ''
     p = rel(depth)
     srcset = ', '.join(p + path + ' ' + str(w) + 'w' for w, path in entry['sizes'])
     big = p + entry['sizes'][-1][1]
     load = 'eager' if eager else 'lazy'
-    prio = ' fetchpriority="high"' if eager else ''
+    prio = ' fetchpriority="high"' if eager else (' fetchpriority="low"' if lowpri else '')
     klass = ' class="' + cls + '"' if cls else ''
     return ('<img src="' + big + '" srcset="' + srcset + '" sizes="' + sizes + '"'
             ' width="' + str(entry['w']) + '" height="' + str(entry['h']) + '"'
@@ -190,11 +190,17 @@ def write(path, content):
 
 # ------------------------------------------------------------------ home --
 def build_home():
-    lead = None
-    for p in SITE['projects']:
-        if IMGS.get(p['slug']):
-            lead = IMGS[p['slug']][0]
-            break
+    # hero slideshow: static lockup, photography cross-fades behind it
+    slides = []
+    for sl in SITE.get('hero_slides') or []:
+        ents = IMGS.get(sl['slug']) or []
+        if len(ents) > sl['index']:
+            slides.append((sl['slug'], ents[sl['index']]))
+    if not slides:
+        for p in SITE['projects']:
+            if IMGS.get(p['slug']):
+                slides = [(p['slug'], IMGS[p['slug']][0])]
+                break
 
     cards = ''
     for i, pr in enumerate(SITE['projects'], 1):
@@ -224,8 +230,16 @@ def build_home():
                   'href="work/' + pr['slug'] + '/">' + art + '</a>')
 
     hero_bg = ''
-    if lead:
-        hero_bg = '<div class="hero__bg">' + pic(lead, '100vw', alt='', eager=True) + '</div>'
+    if slides:
+        cls = 'hero__bg' + (' hero__bg--single' if len(slides) == 1 else '')
+        cycle = ' style="--hero-cycle:' + str(len(slides) * 7) + 's"'
+        imgs = ''
+        for n, (slug, ent) in enumerate(slides):
+            tag = pic(ent, '100vw', alt='', eager=(n == 0), lowpri=(n > 0))
+            delay = ' style="animation-delay:' + str(n * 7) + 's"'
+            imgs += tag[:-1] + delay + '>'
+        # each slide waits its turn; the first carries the load priority
+        hero_bg = '<div class="' + cls + '"' + cycle + '>' + imgs + '</div>'
 
     tag = ('Zo&euml; creates theatre to spark <b>imagination</b> and open hearts '
            'to the magic of <b>transformation</b>.')

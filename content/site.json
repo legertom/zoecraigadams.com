@@ -839,5 +839,23 @@
       "press": [],
       "role": "Directed by"
     }
+  ],
+  "hero_slides": [
+    {
+      "slug": "to-have-and-to-hold",
+      "index": 0
+    },
+    {
+      "slug": "the-wizard-of-oz",
+      "index": 2
+    },
+    {
+      "slug": "cinderella",
+      "index": 3
+    },
+    {
+      "slug": "ursus-americanus",
+      "index": 0
+    }
   ]
 }
