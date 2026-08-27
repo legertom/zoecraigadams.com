@@ -466,3 +466,12 @@ a{color:inherit;text-decoration:none}
     radial-gradient(70% 120% at 50% 0%,color-mix(in srgb,var(--show) 28%,transparent),transparent 70%),
     linear-gradient(170deg,var(--ink-3),var(--ink) 70%);
 }
+
+/* a nomination is never dressed as a win */
+.card__badge--nominee{
+  background:transparent;color:var(--gold);
+  border:1px solid var(--gold);padding:.3rem .55rem;
+}
+.pawards li{display:flex;flex-wrap:wrap;gap:.3rem .55rem;align-items:baseline}
+.pawards li.is-nominee{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.pawards .cat{opacity:.78;font-weight:600}

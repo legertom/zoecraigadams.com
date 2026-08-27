@@ -128,6 +128,39 @@ def press_block(pr):
                 + e(q['quote']) + '&rdquo;</p><p class="press__attr">' + attr + '</p></div>')
     return '<section class="press"><div class="wrap">' + out + '</div></section>'
 
+
+def teaser_tag(pr):
+    r = pr.get('run')
+    if running(pr):
+        return 'Now Playing'
+    if r and r['start'] > TODAY:
+        return 'Coming Soon'
+    return e(pr['year']) if pr.get('year') else 'Coming Soon'
+
+
+def award_badge(pr):
+    aw = pr.get('awards') or []
+    if not aw:
+        return ''
+    win = any(a.get('type') == 'winner' for a in aw)
+    cls = 'card__badge' if win else 'card__badge card__badge--nominee'
+    return ('<span class="' + cls + '">' + STAR + ' '
+            + ('Award Winner' if win else 'Nominee') + '</span>')
+
+def award_list(pr):
+    aw = pr.get('awards') or []
+    if not aw:
+        return ''
+    lis = ''
+    for a in aw:
+        win = a.get('type') == 'winner'
+        cats = ', '.join(e(c) for c in a.get('categories') or [])
+        lis += ('<li' + ('' if win else ' class="is-nominee"') + '>'
+                + STAR + ' ' + ('Winner' if win else 'Nominee') + ' &mdash; '
+                + e(a.get('org', '')) + ('<span class="cat">' + cats + '</span>' if cats else '')
+                + '</li>')
+    return '<ul class="pawards">' + lis + '</ul>'
+
 def bits(pr, tag='span'):
     out = ''
     for b in (pr['venue'], pr['location']):
@@ -154,9 +187,7 @@ def build_home():
     cards = ''
     for i, pr in enumerate(SITE['projects'], 1):
         gal = IMGS.get(pr['slug']) or []
-        badge = ''
-        if pr.get('awards'):
-            badge = '<span class="card__badge">' + STAR + ' Award Winner</span>'
+        badge = award_badge(pr)
         venue = ' &middot; '.join(e(x) for x in (pr['venue'], pr['location']) if x)
         if gal:
             art = ('<div class="card__art">'
@@ -169,7 +200,7 @@ def build_home():
                    + ('<p class="card__venue">' + venue + '</p>' if venue else '')
                    + '</div></div>')
         else:
-            tag = 'Now Playing' if running(pr) else 'Coming Soon'
+            tag = teaser_tag(pr)
             art = ('<div class="card__art bulbs"><div class="teaser">'
                    '<p class="teaser__tag">' + STAR + ' ' + tag + '</p>'
                    '<h3 class="teaser__title">' + e(pr['title']) + '</h3>'
@@ -224,10 +255,7 @@ def build_projects():
     for i, pr in enumerate(ps):
         gal = IMGS.get(pr['slug']) or []
         byline = ' &middot; '.join(e(b) for b in pr['byline'])
-        awards = ''
-        if pr.get('awards'):
-            lis = ''.join('<li>' + STAR + ' ' + e(a) + '</li>' for a in pr['awards'])
-            awards = '<ul class="pawards">' + lis + '</ul>'
+        awards = award_list(pr)
 
         meta = ('<p class="pbar">' + bits(pr) + '</p>'
                 + ('<p class="pbyline">' + byline + '</p>' if byline else '') + awards)
@@ -243,7 +271,7 @@ def build_projects():
         else:
             hero = ('<section class="phero phero--teaser"><div class="phero__inner">'
                 '<p class="kicker">' + STAR + ' '
-                + ('Now Playing Off-Broadway' if running(pr) else 'Coming Soon') + '</p>'
+                + ('Now Playing Off-Broadway' if running(pr) else teaser_tag(pr)) + '</p>'
                 '<h1 class="slab ptitle">' + e(pr['title']) + '</h1>' + meta
                 + '</div></section>'
                 '<div class="wrap"><div class="teaser-band bulbs">'
@@ -288,7 +316,8 @@ def build_projects():
                 '<p class="billing__presents">' + e(pr['title']) + '</p></div>'
                 '<div class="block">' + lead + cast
                 + ('<dl>' + pairs + '</dl>' if pairs else '')
-                + '<span class="block__dir">Directed by <b>Zo&euml; Adams</b></span>'
+                + '<span class="block__dir">' + e(pr.get('role', 'Directed by'))
+                + ' <b>Zo&euml; Adams</b></span>'
                 + photo + '</div></div></section>')
 
         def pg(p2, dirn, cls):

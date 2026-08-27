@@ -99,29 +99,105 @@
           "critic": "Zachary Stewart",
           "date": "2026-08-25",
           "url": "https://www.theatermania.com/news/review-to-have-and-to-hold-is-taming-of-the-shrew-with-a-liberal-arts-degree_1851169/",
-          "quote": "A breezily self-aware update on the classic."
+          "quote": "Lapidus and Sardarov make these lines crackle with flirtatious electricity."
         }
-      ]
+      ],
+      "role": "Directed by"
     },
     {
       "slug": "cinderella",
       "title": "Cinderella",
-      "venue": "Impact Arts",
-      "location": "",
-      "year": "",
-      "byline": [],
-      "credits": [],
-      "photography": "",
+      "venue": "McCullough Theatre",
+      "location": "Austin, TX",
+      "year": "2026",
+      "byline": [
+        "Music by Richard Rodgers · Book and Lyrics by Oscar Hammerstein II",
+        "Enchanted Edition, adapted for the stage by Tom Briggs, from the teleplay by Robert L. Freedman"
+      ],
+      "credits": [
+        {
+          "role": "Producer",
+          "name": "Summer Stock Austin, an Impact Arts program"
+        },
+        {
+          "role": "Music Direction",
+          "name": "Deonte Warren"
+        },
+        {
+          "role": "Choreography",
+          "name": "Matt Kennedy / Noah Wood / Stacey Huston / Ginger Morris"
+        },
+        {
+          "role": "Scenic",
+          "name": "Theada Haining"
+        },
+        {
+          "role": "Lighting",
+          "name": "Rachel Atkinson"
+        },
+        {
+          "role": "Projections",
+          "name": "Dustin Gooch"
+        },
+        {
+          "role": "Costumes",
+          "name": "Teresa Carson"
+        },
+        {
+          "role": "Sound",
+          "name": "Brent Miller"
+        }
+      ],
+      "photography": "Henry Huey",
       "sort": 2,
-      "status": "pending",
-      "note": "TODO: location, year, byline, credits. Photography incoming.",
+      "status": "live",
+      "note": "Summer Stock Austin, an Impact Arts program. Production photography by Henry Huey still to come.",
       "images": [],
       "accent": "#7FB2FF",
       "awards": [],
-      "cast": [],
-      "run": null,
+      "cast": [
+        {
+          "role": "Cinderella",
+          "name": "Avery Linden"
+        },
+        {
+          "role": "Prince Christopher",
+          "name": "Caleb Clemons"
+        },
+        {
+          "role": "Fairy Godmother",
+          "name": "Dia Rushing"
+        },
+        {
+          "role": "Lionel",
+          "name": "Aiden Cox"
+        },
+        {
+          "role": "Stepmother & Stepsisters",
+          "name": "Lucky Cantu / Nila George / Riley Kearney"
+        },
+        {
+          "role": "Young Cinderella",
+          "name": "Alaiya Thigpen"
+        }
+      ],
+      "run": {
+        "start": "2026-07-23",
+        "end": "2026-08-09",
+        "label": "July 23 &ndash; August 9, 2026",
+        "note": "10 performances"
+      },
       "tickets": "",
-      "press": []
+      "press": [
+        {
+          "outlet": "BroadwayWorld",
+          "critic": "Joni Lorraine",
+          "date": "2026-07-31",
+          "url": "https://www.broadwayworld.com/austin/article/Review-CINDERELLA-at-McCullough-Theatre-20260731",
+          "quote": "It’s a show for anyone who loves a good musical."
+        }
+      ],
+      "role": "Directed by"
     },
     {
       "slug": "the-wizard-of-oz",
@@ -132,13 +208,51 @@
       "byline": [
         "By L. Frank Baum",
         "Music and Lyrics by Harold Arlen and E. Y. Harburg",
-        "Background Music by Herbert Stothart"
+        "Background Music by Herbert Stothart",
+        "Based on the MGM film"
       ],
-      "credits": [],
+      "credits": [
+        {
+          "role": "Producer",
+          "name": "Summer Stock Austin, an Impact Arts program"
+        },
+        {
+          "role": "Music Direction",
+          "name": "J. Quinton Johnson"
+        },
+        {
+          "role": "Choreography",
+          "name": "Khali Sykes"
+        },
+        {
+          "role": "Scenic",
+          "name": "Theada Haining"
+        },
+        {
+          "role": "Lighting",
+          "name": "Rachel Atkinson"
+        },
+        {
+          "role": "Costumes",
+          "name": "Teresa Carson"
+        },
+        {
+          "role": "Sound",
+          "name": "LEVO"
+        },
+        {
+          "role": "Properties",
+          "name": "Rachael Gomez"
+        },
+        {
+          "role": "Flying Effects",
+          "name": "ZFX"
+        }
+      ],
       "photography": "",
       "sort": 3,
       "status": "live",
-      "note": "",
+      "note": "Summer Stock Austin, an Impact Arts program.",
       "images": [
         "002_home_HHM_7577.webp",
         "003_home_HHM_6947.webp",
@@ -154,11 +268,60 @@
         "013_home_HHI_1755.webp"
       ],
       "accent": "#22C56B",
-      "awards": [],
-      "cast": [],
+      "awards": [
+        {
+          "type": "nominee",
+          "org": "2023 BroadwayWorld Austin Awards",
+          "categories": [
+            "Best Direction of a Musical",
+            "Best Musical",
+            "Best Dance Production",
+            "Best Theatre for Young Audiences"
+          ]
+        }
+      ],
+      "cast": [
+        {
+          "role": "Dorothy Gale",
+          "name": "Sophia Laia"
+        },
+        {
+          "role": "Glinda / Aunt Em",
+          "name": "Arianna Pierce"
+        },
+        {
+          "role": "Wicked Witch of the West / Miss Almira Gulch",
+          "name": "Sarah Ferguson"
+        },
+        {
+          "role": "Scarecrow / Hunk",
+          "name": "Noah Wood"
+        },
+        {
+          "role": "Tin Man / Hickory",
+          "name": "Chavin Medina"
+        },
+        {
+          "role": "Cowardly Lion / Zeke",
+          "name": "JP Lopez"
+        },
+        {
+          "role": "The Wizard / Professor Marvel",
+          "name": "Kyra Carr"
+        },
+        {
+          "role": "Uncle Henry / Emerald City Guard",
+          "name": "Jordan Williams"
+        },
+        {
+          "role": "Toto Puppeteer",
+          "name": "Lucky Cantu"
+        }
+      ],
       "run": null,
       "tickets": "",
-      "press": []
+      "press": [],
+      "role": "Directed by"
     },
     {
       "slug": "ursus-americanus",
@@ -243,7 +406,8 @@
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": []
+      "press": [],
+      "role": "Directed by"
     },
     {
       "slug": "sister-act",
@@ -318,7 +482,8 @@
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": []
+      "press": [],
+      "role": "Directed by"
     },
     {
       "slug": "in-the-name-of-us",
@@ -353,12 +518,19 @@
       ],
       "accent": "#FF3B1F",
       "awards": [
-        "Downtown Urban Arts Festival - Best Short Play Award"
+        {
+          "type": "winner",
+          "org": "Downtown Urban Arts Festival",
+          "categories": [
+            "Best Short Play"
+          ]
+        }
       ],
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": []
+      "press": [],
+      "role": "Directed by"
     },
     {
       "slug": "skin-flick-city",
@@ -408,7 +580,8 @@
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": []
+      "press": [],
+      "role": "Directed by"
     },
     {
       "slug": "ragtime",
@@ -457,7 +630,8 @@
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": []
+      "press": [],
+      "role": "Directed by"
     },
     {
       "slug": "not-clown",
@@ -514,7 +688,8 @@
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": []
+      "press": [],
+      "role": "Directed by"
     },
     {
       "slug": "the-cherry-orchard",
@@ -564,7 +739,8 @@
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": []
+      "press": [],
+      "role": "Directed by"
     },
     {
       "slug": "meltdown",
@@ -607,7 +783,8 @@
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": []
+      "press": [],
+      "role": "Directed by"
     },
     {
       "slug": "krav",
@@ -655,7 +832,8 @@
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": []
+      "press": [],
+      "role": "Directed by"
     }
   ]
 }
