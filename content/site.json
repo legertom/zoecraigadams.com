@@ -717,13 +717,13 @@
       "status": "live",
       "note": "",
       "images": [
-        "Zoë Website Photos/Shows/not-clown/photos/DSC04482.jpg",
         "Zoë Website Photos/Shows/not-clown/photos/DSC04850.jpg",
         "Zoë Website Photos/Shows/not-clown/photos/DSC04905.jpg",
         "Zoë Website Photos/Shows/not-clown/photos/DSC05547.jpg",
         "Zoë Website Photos/Shows/not-clown/photos/DSC05566.jpg",
         "Zoë Website Photos/Shows/not-clown/photos/_MG_4761.jpg",
         "scrape/images/105_work_DSC05529.webp",
+        "Zoë Website Photos/Shows/not-clown/photos/DSC04482.jpg",
         "scrape/images/106_work_DSC04826.webp",
         "scrape/images/119_work__peaks-6dwyp-bzp4m_DSC04609.webp"
       ],
@@ -734,7 +734,8 @@
       "tickets": "",
       "press": [],
       "role": "Directed by",
-      "card_index": 5
+      "card_index": 4,
+      "hero_index": 2
     },
     {
       "slug": "the-cherry-orchard",
