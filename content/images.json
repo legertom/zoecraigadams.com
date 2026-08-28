@@ -1274,8 +1274,8 @@
   {
    "base": "p04",
    "w": 2500,
-   "h": 1822,
-   "ratio": 1.3721,
+   "h": 2000,
+   "ratio": 1.25,
    "sizes": [
     [
      640,
@@ -1291,27 +1291,6 @@
     ]
    ],
    "src": "assets/img/in-the-name-of-us/p04-2000.webp"
-  },
-  {
-   "base": "p05",
-   "w": 2500,
-   "h": 2000,
-   "ratio": 1.25,
-   "sizes": [
-    [
-     640,
-     "assets/img/in-the-name-of-us/p05-640.webp"
-    ],
-    [
-     1280,
-     "assets/img/in-the-name-of-us/p05-1280.webp"
-    ],
-    [
-     2000,
-     "assets/img/in-the-name-of-us/p05-2000.webp"
-    ]
-   ],
-   "src": "assets/img/in-the-name-of-us/p05-2000.webp"
   }
  ],
  "skin-flick-city": [
@@ -1638,8 +1617,8 @@
   {
    "base": "p05",
    "w": 2500,
-   "h": 1670,
-   "ratio": 1.497,
+   "h": 1669,
+   "ratio": 1.4979,
    "sizes": [
     [
      640,
@@ -1697,27 +1676,6 @@
     ]
    ],
    "src": "assets/img/not-clown/p07-2000.webp"
-  },
-  {
-   "base": "p08",
-   "w": 2500,
-   "h": 1669,
-   "ratio": 1.4979,
-   "sizes": [
-    [
-     640,
-     "assets/img/not-clown/p08-640.webp"
-    ],
-    [
-     1280,
-     "assets/img/not-clown/p08-1280.webp"
-    ],
-    [
-     2000,
-     "assets/img/not-clown/p08-2000.webp"
-    ]
-   ],
-   "src": "assets/img/not-clown/p08-2000.webp"
   }
  ],
  "the-cherry-orchard": [

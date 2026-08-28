@@ -524,7 +524,15 @@
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": [],
+      "press": [
+        {
+          "outlet": "Austin Arts Watch",
+          "critic": "Ryan E. Johnson",
+          "date": "2019-08-07",
+          "url": "https://austinartswatch.com/2019/08/07/summer-stocks-sister-act-is-a-stunning-display-of-fresh-young-talent/",
+          "quote": "The level of talent on display is colossal."
+        }
+      ],
       "role": "Directed by",
       "card_index": 5,
       "hero_index": 5
@@ -557,7 +565,6 @@
         "Zoë Website Photos/Shows/in-the-name-of-us/photos/tempImageNz2SNm.png",
         "Zoë Website Photos/Shows/in-the-name-of-us/photos/tempImageQb1DeC.png",
         "Zoë Website Photos/Shows/in-the-name-of-us/photos/tempImageik7cqF.png",
-        "scrape/images/111_work_tempImagekwdBUD.webp",
         "scrape/images/112_work_tempImageV4Xcax.webp"
       ],
       "accent": "#FF3B1F",
@@ -722,7 +729,6 @@
         "Zoë Website Photos/Shows/not-clown/photos/DSC05547.jpg",
         "Zoë Website Photos/Shows/not-clown/photos/DSC05566.jpg",
         "Zoë Website Photos/Shows/not-clown/photos/_MG_4761.jpg",
-        "scrape/images/105_work_DSC05529.webp",
         "Zoë Website Photos/Shows/not-clown/photos/DSC04482.jpg",
         "scrape/images/106_work_DSC04826.webp",
         "scrape/images/119_work__peaks-6dwyp-bzp4m_DSC04609.webp"
