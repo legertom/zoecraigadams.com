@@ -770,7 +770,15 @@
       "cast": [],
       "run": null,
       "tickets": "",
-      "press": [],
+      "press": [
+        {
+          "outlet": "Washington Square News",
+          "critic": "Emily Fagel",
+          "date": "2018-01-29",
+          "url": "https://nyunews.com/2018/01/28/01-29-arts-clown/",
+          "quote": "It achieved the difficult task of inspiring laughs and also triggering the uneasiness typically felt with a dystopian piece."
+        }
+      ],
       "role": "Directed by",
       "card_index": 4,
       "hero_index": 2,
