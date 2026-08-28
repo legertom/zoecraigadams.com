@@ -518,17 +518,16 @@
       "status": "live",
       "note": "",
       "images": [
-        "Zoë Website Photos/Shows/sister-act/photos/DSC_3256.jpg",
         "Zoë Website Photos/Shows/sister-act/photos/DSC_3491.jpg",
         "Zoë Website Photos/Shows/sister-act/photos/DSC_3578.jpg",
         "Zoë Website Photos/Shows/sister-act/photos/DSC_3700.jpg",
         "Zoë Website Photos/Shows/sister-act/photos/DSC_3968.jpg",
         "Zoë Website Photos/Shows/sister-act/photos/DSC_4231.jpg",
-        "Zoë Website Photos/Shows/sister-act/photos/DSC_4271.jpg",
         "Zoë Website Photos/Shows/sister-act/photos/DSC_4308.jpg",
         "Zoë Website Photos/Shows/sister-act/photos/DSC_4391.jpg",
         "Zoë Website Photos/Shows/sister-act/photos/DSC_7177.jpg",
-        "Zoë Website Photos/Shows/sister-act/photos/DSC_7791.jpg"
+        "Zoë Website Photos/Shows/sister-act/photos/DSC_7791.jpg",
+        "Zoë Website Photos/Shows/sister-act/photos/DSC_4271.jpg"
       ],
       "accent": "#FFC24A",
       "awards": [
@@ -566,8 +565,8 @@
         }
       ],
       "role": "Directed by",
-      "card_index": 5,
-      "hero_index": 5
+      "card_index": 4,
+      "hero_index": 4
     },
     {
       "slug": "in-the-name-of-us",

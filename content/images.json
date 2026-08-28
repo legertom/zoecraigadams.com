@@ -1163,27 +1163,6 @@
     ]
    ],
    "src": "assets/img/sister-act/p09-2000.webp"
-  },
-  {
-   "base": "p10",
-   "w": 2500,
-   "h": 1656,
-   "ratio": 1.5097,
-   "sizes": [
-    [
-     640,
-     "assets/img/sister-act/p10-640.webp"
-    ],
-    [
-     1280,
-     "assets/img/sister-act/p10-1280.webp"
-    ],
-    [
-     2000,
-     "assets/img/sister-act/p10-2000.webp"
-    ]
-   ],
-   "src": "assets/img/sister-act/p10-2000.webp"
   }
  ],
  "in-the-name-of-us": [
