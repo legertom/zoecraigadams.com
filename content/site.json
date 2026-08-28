@@ -313,13 +313,24 @@
       "accent": "#22C56B",
       "awards": [
         {
+          "type": "winner",
+          "org": "B. Iden Payne Awards 2022–23",
+          "categories": [
+            "Dance Performance",
+            "Dance Choreography"
+          ],
+          "note": "Eight nominations in all, including Outstanding Production of a Musical.",
+          "url": "https://www.bidenpayneawards.org/single-post/2022-2023-nominees",
+          "link_text": "See the awards"
+        },
+        {
           "type": "nominee",
           "org": "2023 BroadwayWorld Austin Awards",
           "categories": [
             "Best Direction of a Musical"
           ],
-          "note": "The production received nine nominations, including Best Dance Production and Best Theatre for Young Audiences Production.",
-          "url": "https://www.broadwayworld.com/austin/article/Latest-Standings-Announced-For-The-2023-BroadwayWorld-Austin-Awards-MATILDA-THE-MUSICAL-Leads-Best-Musical-20231120"
+          "url": "https://www.broadwayworld.com/austin/article/Latest-Standings-Announced-For-The-2023-BroadwayWorld-Austin-Awards-MATILDA-THE-MUSICAL-Leads-Best-Musical-20231120",
+          "link_text": "See the nominees"
         }
       ],
       "cast": [
@@ -520,7 +531,21 @@
         "Zoë Website Photos/Shows/sister-act/photos/DSC_7791.jpg"
       ],
       "accent": "#FFC24A",
-      "awards": [],
+      "awards": [
+        {
+          "type": "nominee",
+          "org": "B. Iden Payne Awards 2018–19",
+          "categories": [
+            "Outstanding Production of Theatre for Young Audiences",
+            "Lead Actress in Musical Theatre",
+            "Ensemble Performance",
+            "Dance Choreography"
+          ],
+          "note": "Six nominations in all.",
+          "url": "https://www.bidenpayneawards.org/single-post/2019/09/11/2018-2019-Nominees",
+          "link_text": "See the nominees"
+        }
+      ],
       "cast": [],
       "run": null,
       "tickets": "",
