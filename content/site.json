@@ -526,7 +526,8 @@
       "tickets": "",
       "press": [],
       "role": "Directed by",
-      "card_index": 5
+      "card_index": 5,
+      "hero_index": 5
     },
     {
       "slug": "in-the-name-of-us",
