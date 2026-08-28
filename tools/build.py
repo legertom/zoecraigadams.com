@@ -344,9 +344,14 @@ def build_projects():
 
         # every still appears here, the hero included - it is cropped wide up top,
         # so this is the only place the full frame can be seen
+        # the hero normally repeats in the feed, since it is cropped wide up top
+        # and this is the only place its full frame can be seen; a show can opt
+        # out when the hero reads as a near-repeat of another still
+        feed = gal if pr.get('hero_in_gallery', True) else [
+            g for n, g in enumerate(gal) if n != hero_i]
         figs = ''
-        total = len(gal)
-        for n, g in enumerate(gal, 1):
+        total = len(feed)
+        for n, g in enumerate(feed, 1):
             full = rel(2) + g['sizes'][-1][1]
             cap = pr['title'] + ' - production photograph ' + str(n)
             figs += ('<figure class="reveal">'

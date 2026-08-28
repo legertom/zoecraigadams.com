@@ -526,6 +526,13 @@
       "tickets": "",
       "press": [
         {
+          "outlet": "BroadwayWorld",
+          "critic": "Jesse Griffith",
+          "date": "2019-07-29",
+          "url": "https://www.broadwayworld.com/austin/article/BWW-Review-SISTER-ACT-at-The-Rollins-Theatre-Austin-Texas-20190729",
+          "quote": "Pure theatre magic."
+        },
+        {
           "outlet": "Austin Arts Watch",
           "critic": "Ryan E. Johnson",
           "date": "2019-08-07",
@@ -741,7 +748,8 @@
       "press": [],
       "role": "Directed by",
       "card_index": 4,
-      "hero_index": 2
+      "hero_index": 2,
+      "hero_in_gallery": false
     },
     {
       "slug": "the-cherry-orchard",
